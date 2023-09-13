@@ -11,7 +11,7 @@
 
     <!-- new task form -->
     <div class="new-task-form">
-      <TaskForm/>
+      <TaskForm />
     </div>
 
     <!-- filter -->
@@ -20,16 +20,20 @@
       <button @click="filter = 'favs'">Fav Task</button>
     </nav>
 
+    <!-- loading -->
+
+    <div class="loading" v-if="TaskStore.isLoading">loading Tasks....</div>
+
     <!-- Task List -->
     <div class="task-list" v-if="filter === 'all'">
-      <p>You Have {{TaskStore.totalCount}} tasks to do</p>
+      <p>You Have {{ TaskStore.totalCount }} tasks to do</p>
       <div v-for="task in TaskStore.task" :key="task.id">
         <TaskDetails :task="task" />
       </div>
     </div>
 
     <div class="task-list" v-if="filter === 'favs'">
-      <p>You Have {{TaskStore.favCount}} fav tasks to do</p>
+      <p>You Have {{ TaskStore.favCount }} fav tasks to do</p>
       <div v-for="task in TaskStore.favs" :key="task.id">
         <TaskDetails :task="task" />
       </div>
@@ -46,6 +50,9 @@ export default {
   name: "App",
   setup() {
     const TaskStore = useTaskStore();
+    // fetch task
+    TaskStore.getTasks();
+
     const filter = ref("all");
     return { TaskStore, filter };
   },
