@@ -65,20 +65,53 @@ header h1 {
 
 /* CSS for filter nav */
 .filter {
-    width: 640px;
-    margin: 10px auto;
-    text-align: right;
-  }
-  
-  /* CSS for filter buttons */
-  .filter button {
-    display: inline-block;
-    margin-left: 10px;
-    background: #fff;
-    border: 2px solid #555; /* Correct the border color */
-    border-radius: 4px;
-    padding: 4px 8px;
-    cursor: pointer;
-    font-size: 1em; /* You had two font-size declarations; I removed the first one */
-  }
-  
+  width: 640px;
+  margin: 10px auto;
+  text-align: right;
+}
+
+/* CSS for filter buttons */
+.filter button {
+  display: inline-block;
+  margin-left: 10px;
+  background: #fff;
+  border: 2px solid #555; /* Correct the border color */
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 1em; /* You had two font-size declarations; I removed the first one */
+}
+
+/* New Task Form */
+.new-task-form {
+  background: #e7e7e7;
+  padding: 20px 0;
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 10px;
+}
+
+/* Button Styles */
+form button {
+  background: #ffd859;
+  border: 0;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+/* Input Styles */
+form input {
+  border: 0;
+  padding: 10px;
+  border-radius: 6px;
+  color: #555;
+  font-size: 1em;
+}

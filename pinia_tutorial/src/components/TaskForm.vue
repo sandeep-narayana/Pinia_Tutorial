@@ -14,7 +14,6 @@ export default {
     const taskStore = useTaskStore();
     const newTask = ref('')
     const handleSubmit = () =>{
-        console.log("Hello")
         if(newTask.value.length>0){
             taskStore.addTask({
                 title:newTask.value,
