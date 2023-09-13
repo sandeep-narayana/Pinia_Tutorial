@@ -32,3 +32,33 @@ header h1 {
   color: #777;
   transform: rotate(2deg);
 }
+
+/* CSS for a task list */
+.task-list {
+  max-width: 640px;
+  margin: 20px auto;
+  /* Add more CSS properties here as needed */
+}
+
+/* CSS for a task */
+.task {
+  padding: 6px 20px;
+  background: #fff; /* Use a valid background property value */
+  margin-top: 20px;
+  border-radius: 4px;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.05); /* Fix the 'rgba' value */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Targeting elements inside .task */
+.task h3,
+.task icons {
+  /* Assuming 'icons' is a class or element name */
+  display: inline-block;
+}
+
+.task .icons {
+  text-align: right;
+}
