@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 
 export const useTaskStore = defineStore("taskStore", {
   state: () => ({
-    task: [{ id: 3, title: "plmhaven", isFav: false }],
+    task: [],
     isLoading: false,
   }),
   getters: {
