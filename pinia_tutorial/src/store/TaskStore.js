@@ -2,10 +2,8 @@ import { defineStore } from "pinia";
 
 export const useTaskStore = defineStore("taskStore", {
   state: () => ({
-    task: [
-      { id: 3, title: "plmhaven", isFav: false },
-    ],
-    isLoading:false
+    task: [{ id: 3, title: "plmhaven", isFav: false }],
+    isLoading: false,
   }),
   getters: {
     favs() {
@@ -24,27 +22,55 @@ export const useTaskStore = defineStore("taskStore", {
     },
   },
   actions: {
-    async getTasks(){
+    async getTasks() {
       this.isLoading = true;
-      const res = await fetch("http://localhost:3000/task")
-      const data = await res.json()
+      const res = await fetch("http://localhost:3000/task");
+      const data = await res.json();
       this.task = data;
-      this.isLoading = false;  
+      this.isLoading = false;
     },
-    addTask(task) {
-      // this.task.push(task);
-      this.task = [...this.task, task]; // Create a new array with the added task
+
+    async addTask(task) {
+      const res = await fetch("http://localhost:3000/task", {
+        method: "POST",
+        body: JSON.stringify(task),
+        headers: { "content-Type": "application/json" },
+      });
+      if (res.error) {
+        console.log(res.error);
+      }
+
+       // refresh the task
+       this.task = [...this.task, task]; 
     },
-    deleteTask(id) {
+
+    async deleteTask(id) {
+      const res = await fetch(`http://localhost:3000/task/${id}`, {
+        method: "DELETE",
+      });
+      if (res.error) {
+        console.log(res.error);
+      }
+
+      // refresh state 
       this.task = this.task.filter((t) => {
         return t.id != id;
       });
     },
-    toggleFav(id) {
-      console.log("Hello");
+
+    async toggleFav(id) {
       // toggle between true and false
       const tsk = this.task.find((t) => t.id === id);
       tsk.isFav = !tsk.isFav;
+
+      const res = await fetch("http://localhost:3000/task/${id}", {
+        method: "PATCH",
+        body: JSON.stringify({ isFav: tsk.isFav }),
+        headers: { "content-Type": "application/json" },
+      });
+      if (res.error) {
+        console.log(res.error);
+      }
     },
   },
 });
