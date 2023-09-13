@@ -62,7 +62,16 @@ header h1 {
 .task .icons {
   text-align: right;
 }
+.task i {
+  font-size: 1.4em;
+  margin-left: 6px;
+  cursor: pointer;
+  color: •#bbb;
+}
 
+.task i.active {
+    color: red;
+}
 /* CSS for filter nav */
 .filter {
   width: 640px;
